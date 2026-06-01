@@ -1,10 +1,11 @@
-const CACHE_NAME = "elgen-study-v3";
+const CACHE_NAME = "elgen-study-v4";
 const CORE_FILES = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
   "./data.js",
+  "./image-data.js",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png"

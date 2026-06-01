@@ -18,6 +18,8 @@ const nextQuiz = document.querySelector("#nextQuiz");
 let quizIndex = 0;
 let shuffledQuiz = shuffle([...data.items]);
 
+setupDeviceMode();
+
 function shuffle(list) {
   for (let i = list.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -34,6 +36,22 @@ function escapeHtml(value) {
     '"': "&quot;",
     "'": "&#039;"
   }[char]));
+}
+
+function setupDeviceMode() {
+  const ua = navigator.userAgent || "";
+  const isAndroid = /Android/i.test(ua);
+  const isWindows = /Windows/i.test(ua);
+  const isWide = window.matchMedia("(min-width: 900px)").matches;
+  document.documentElement.classList.toggle("device-android", isAndroid);
+  document.documentElement.classList.toggle("device-windows", isWindows);
+  document.documentElement.classList.toggle("device-wide", isWide);
+}
+
+window.addEventListener("resize", setupDeviceMode);
+
+function imageSrc(src) {
+  return (window.ELGEN_IMAGES && window.ELGEN_IMAGES[src]) || src;
 }
 
 function saveProgress() {
@@ -70,7 +88,7 @@ function renderImageGallery(item) {
   return `
     <div class="gallery-label">本页相关图片</div>
     <div class="image-grid count-${Math.min(visible.length, 6)}">
-      ${visible.map((src, index) => `<img src="${src}" alt="${escapeHtml(item.title)} 图 ${index + 1}">`).join("")}
+      ${visible.map((src, index) => `<img src="${imageSrc(src)}" alt="${escapeHtml(item.title)} 图 ${index + 1}" loading="lazy">`).join("")}
     </div>
   `;
 }
@@ -150,7 +168,7 @@ function quizOptionsFor(item) {
 
 function renderQuiz() {
   const item = shuffledQuiz[quizIndex % shuffledQuiz.length];
-  quizImage.src = (item.images || [])[0] || "";
+  quizImage.src = imageSrc((item.images || [])[0] || "");
   quizImage.alt = item.title;
   quizTitle.textContent = item.title;
   quizFeedback.textContent = "请选择这个英文产品名最接近的中文意思。";

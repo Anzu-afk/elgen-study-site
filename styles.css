@@ -50,6 +50,11 @@ h1 { margin-bottom: 0; font-size: clamp(24px, 6vw, 42px); }
 .score strong { display: block; font-size: 22px; color: var(--accent); }
 .score span { font-size: 12px; color: var(--muted); }
 main { padding: 16px clamp(12px, 4vw, 42px) 42px; }
+html.device-windows main,
+html.device-wide main {
+  max-width: 1420px;
+  margin: 0 auto;
+}
 .controls {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(160px, 240px) auto;
@@ -87,6 +92,10 @@ button {
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: 14px;
 }
+html.device-windows .cards,
+html.device-wide .cards {
+  grid-template-columns: 1fr;
+}
 .card {
   display: grid;
   grid-template-columns: minmax(260px, 42%) 1fr;
@@ -100,6 +109,11 @@ button {
   padding: 10px;
   background: #eef2ef;
   border-right: 1px solid var(--line);
+}
+html.device-windows .card,
+html.device-wide .card {
+  grid-template-columns: minmax(360px, 34%) 1fr;
+  min-height: 0;
 }
 .gallery-label {
   margin: 0 0 8px;
@@ -123,12 +137,31 @@ button {
   mix-blend-mode: multiply;
 }
 .image-grid.count-1 img { height: 270px; }
+html.device-windows .image-box img,
+html.device-wide .image-box img {
+  height: 150px;
+}
+html.device-windows .image-grid.count-1 img,
+html.device-wide .image-grid.count-1 img {
+  height: 320px;
+}
 .image-empty { display: grid; place-items: center; min-height: 220px; color: var(--muted); }
 .card-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
 .card h2 { margin-bottom: 0; font-size: 20px; line-height: 1.18; }
+html.device-windows .card h2,
+html.device-wide .card h2 {
+  font-size: 24px;
+}
 .cn { color: var(--accent-2); font-weight: 700; }
 .category { color: var(--blue); font-size: 13px; font-weight: 700; }
 .intro { color: var(--ink); line-height: 1.45; }
+html.device-windows .intro,
+html.device-wide .intro,
+html.device-windows .english p,
+html.device-wide .english p {
+  font-size: 17px;
+  line-height: 1.62;
+}
 .english {
   padding: 10px;
   background: #f4f8fb;
@@ -220,4 +253,16 @@ button {
 @media (max-width: 430px) {
   main { padding-left: 10px; padding-right: 10px; }
   .image-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .topbar {
+    position: static;
+    padding: 14px 12px;
+  }
+  .score {
+    min-width: 72px;
+  }
+  .intro,
+  .english p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
 }
