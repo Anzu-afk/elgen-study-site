@@ -1,0 +1,23 @@
+{
+  "name": "Elgen 产品学习",
+  "short_name": "Elgen学习",
+  "description": "用中文理解 Elgen 产品，并练习英文介绍。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8faf7",
+  "theme_color": "#0f7b5c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

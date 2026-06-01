@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elgen 产品学习</title>
+  <meta name="theme-color" content="#0f7b5c">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Elgen Catalog Study</p>
+      <h1>产品识图学习</h1>
+      <p class="subtitle">先用中文理解，再练英文介绍</p>
+    </div>
+    <div class="score">
+      <strong id="progressText">0%</strong>
+      <span>已掌握</span>
+    </div>
+  </header>
+  <main>
+    <section class="controls">
+      <input id="search" type="search" placeholder="搜索英文名、中文名、分类">
+      <select id="category"></select>
+      <div class="tabs" role="tablist">
+        <button id="tabLearn" class="active" type="button">学习</button>
+        <button id="tabQuiz" type="button">测验</button>
+      </div>
+    </section>
+    <section id="learnView">
+      <div id="cards" class="cards"></div>
+    </section>
+    <section id="quizView" class="quiz hidden">
+      <div class="quiz-panel">
+        <div class="quiz-image-wrap"><img id="quizImage" alt=""></div>
+        <div class="quiz-body">
+          <p class="eyebrow">看图选名称</p>
+          <h2 id="quizTitle">这是什么产品？</h2>
+          <div id="quizOptions" class="quiz-options"></div>
+          <p id="quizFeedback" class="feedback"></p>
+          <button id="nextQuiz" type="button">下一题</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
